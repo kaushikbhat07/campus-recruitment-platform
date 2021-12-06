@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch } from "react-router-dom";
 import HomePage from "./HomePage";
 import About from "./About";
