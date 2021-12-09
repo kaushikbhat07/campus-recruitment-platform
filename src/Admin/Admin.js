@@ -1,15 +1,14 @@
-// import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 
-function HomePage() {
+function Admin() {
     return (
         <Row>
             <Card body className="shadow">
-                This is some text within a card body.
+                Admin
             </Card>
         </Row>
     );
 }
 
-export default HomePage;
+export default Admin;

@@ -1,12 +1,11 @@
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
+// import Nav from "react-bootstrap/Nav";
+// import NavDropdown from "react-bootstrap/NavDropdown";
 
 function BottomNavbarComponent() {
     return (
         <Navbar
-            collapseOnSelect
             expand="lg"
             bg="dark"
             variant="dark"
@@ -14,7 +13,7 @@ function BottomNavbarComponent() {
             className="footer"
         >
             <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
@@ -45,7 +44,7 @@ function BottomNavbarComponent() {
                             Dank memes
                         </Nav.Link>
                     </Nav>
-                </Navbar.Collapse>
+                </Navbar.Collapse> */}
             </Container>
         </Navbar>
     );
