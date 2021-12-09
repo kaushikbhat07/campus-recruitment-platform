@@ -2,6 +2,8 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 // import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
+import "./TopNavbarComponent.css";
 
 function TopNavbarComponent() {
     return (
@@ -41,10 +43,30 @@ function TopNavbarComponent() {
                         </NavDropdown> */}
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">Login</Nav.Link>
-                        <Nav.Link href="#memes">Register</Nav.Link>
-                        <Nav.Link href="#admin">Admin</Nav.Link>
-                        <Nav.Link href="#student">Student</Nav.Link>
+                        <Link
+                            className="nav-link nav-reduce-top-bottom-padding"
+                            to="/login"
+                        >
+                            <Nav.Link href="#login">Login</Nav.Link>
+                        </Link>
+                        <Link
+                            className="nav-link nav-reduce-top-bottom-padding"
+                            to="/register"
+                        >
+                            <Nav.Link href="#register">Register</Nav.Link>
+                        </Link>
+                        <Link
+                            className="nav-link nav-reduce-top-bottom-padding"
+                            to="/admin"
+                        >
+                            <Nav.Link href="#admin">Admin</Nav.Link>
+                        </Link>
+                        <Link
+                            className="nav-link nav-reduce-top-bottom-padding"
+                            to="/about"
+                        >
+                            <Nav.Link href="#student">Student</Nav.Link>
+                        </Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
