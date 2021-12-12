@@ -4,6 +4,8 @@ import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import { connect } from "react-redux";
+import * as jobActions from "../../Redux/Actions/JobActions";
 
 class Job extends React.Component {
     state = {
@@ -35,41 +37,43 @@ class Job extends React.Component {
 
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-            alert("NO GO for submission");
+            console.log("NO GO for submission");
             event.stopPropagation();
 
             const formUpdatedState = { ...this.state.form, validated: true };
 
             this.setState({ form: formUpdatedState });
         } else {
-            alert("OK for submission");
+            console.log("OK for submission");
 
             let newJobsList = [];
             newJobsList.push(this.state.newJob);
 
             console.log(JSON.stringify(newJobsList));
 
-            fetch("http://localhost:8085/job/new/multiple", {
-                method: "POST",
-                body: JSON.stringify(newJobsList),
-                headers: {
-                    "Content-type": "application/json",
-                    Accept: "*/*",
-                    Connection: "keep-alive",
-                },
-            })
-                .then((response) => {
-                    console.log(response.status);
-                    return response.json();
-                })
-                .then(
-                    (result) => {
-                        console.log(result);
-                    },
-                    (error) => {
-                        console.log(error);
-                    }
-                );
+            this.props.dispatch(jobActions.createJob(this.state.newJob));
+
+            // fetch("http://localhost:8085/job/new/multiple", {
+            //     method: "POST",
+            //     body: JSON.stringify(newJobsList),
+            //     headers: {
+            //         "Content-type": "application/json",
+            //         Accept: "*/*",
+            //         Connection: "keep-alive",
+            //     },
+            // })
+            //     .then((response) => {
+            //         console.log(response.status);
+            //         return response.json();
+            //     })
+            //     .then(
+            //         (result) => {
+            //             console.log(result);
+            //         },
+            //         (error) => {
+            //             console.log(error);
+            //         }
+            //     );
         }
     };
 
@@ -205,4 +209,10 @@ class Job extends React.Component {
     }
 }
 
-export default Job;
+function mapStateToProps(state, ownProps) {
+    return {
+        jobs: state.jobs,
+    };
+}
+
+export default connect(mapStateToProps)(Job);
