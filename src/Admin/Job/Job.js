@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import * as jobActions from "../../Redux/Actions/JobActions";
+import { bindActionCreators } from "redux";
 
 class Job extends React.Component {
     state = {
@@ -51,7 +52,8 @@ class Job extends React.Component {
 
             console.log(JSON.stringify(newJobsList));
 
-            this.props.dispatch(jobActions.createJob(this.state.newJob));
+            // this.props.dispatch(jobActions.createJob(this.state.newJob));
+            this.props.actions.createJob(this.state.newJob);
 
             // fetch("http://localhost:8085/job/new/multiple", {
             //     method: "POST",
@@ -215,4 +217,11 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(Job);
+function mapDispatchToProps(dispatch, ownProps) {
+    return {
+        actions: bindActionCreators(jobActions, dispatch),
+        // createJob: (job) => dispatch(jobActions.createJob(job)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Job);
