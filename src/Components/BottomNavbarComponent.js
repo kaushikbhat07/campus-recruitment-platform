@@ -1,6 +1,8 @@
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-// import Nav from "react-bootstrap/Nav";
+import Nav from "react-bootstrap/Nav";
+import { Link } from "react-router-dom";
+
 // import NavDropdown from "react-bootstrap/NavDropdown";
 
 function BottomNavbarComponent() {
@@ -37,14 +39,22 @@ function BottomNavbarComponent() {
                                 Separated link
                             </NavDropdown.Item>
                         </NavDropdown>
-                    </Nav>
-                    <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
-                    </Nav>
-                </Navbar.Collapse> */}
+                    </Nav> */}
+                <Nav>
+                    <Link
+                        className="nav-link nav-reduce-top-bottom-padding"
+                        to="/admin/job"
+                    >
+                        <Nav.Link href="#login">Create Job</Nav.Link>
+                    </Link>
+                    <Link
+                        className="nav-link nav-reduce-top-bottom-padding"
+                        to="/student/job"
+                    >
+                        <Nav.Link href="#login">View Job</Nav.Link>
+                    </Link>
+                </Nav>
+                {/* </Navbar.Collapse>  */}
             </Container>
         </Navbar>
     );

@@ -5,151 +5,92 @@ import Row from "react-bootstrap/Row";
 // import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Accordion from "react-bootstrap/Accordion";
+import { connect } from "react-redux";
+import * as jobActions from "../../Redux/Actions/JobActions";
+import { bindActionCreators } from "redux";
 
 class ViewJob extends React.Component {
-    state = {
-        jobList: {},
-    };
+    componentDidMount() {
+        this.props.actions
+            .loadJobs()
+            .catch((error) => alert("error loading jobs"));
+    }
 
     render() {
+        const jobs = this.props.jobs;
+        console.log("jobs frm view jobs: ", jobs);
+        // this.props.jobs &&
+        // this.props.jobs.forEach((element) => console.log(element[0]));
+
+        // jobs.forEach((element, index) => {
+        //     console.log(element[index].company); // 100, 200, 300
+        //     console.log(index); // 0, 1, 2
+        //     // console.log(array); // same myArray object 3 times
+        // });
+
         return (
             <Row>
                 <div>
                     <h5 className="mb-4">Job Openings</h5>
-                    <Accordion defaultActiveKey="0" className="mb-4 shadow">
-                        <Accordion.Item eventKey="0">
-                            <Accordion.Header>
-                                <h5>Cerner</h5>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur. Excepteur sint
-                                occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.
-                                <div class="text-muted text-end">
-                                    2 days ago
-                                </div>
-                                <hr />
-                                <div className="text-end">
-                                    <Button variant="danger">
-                                        Apply now{" "}
-                                        <i class="bi bi-pencil-square"></i>
-                                    </Button>
-                                </div>
-                            </Accordion.Body>
-                            {/* <div class="text-muted text-end card-footer">
-                                2 days ago
-                            </div> */}
-                        </Accordion.Item>
-                    </Accordion>
-                    <Accordion defaultActiveKey="0" className="mb-4 shadow">
-                        <Accordion.Item eventKey="0">
-                            <Accordion.Header>
-                                <h5>Google</h5>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur. Excepteur sint
-                                occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.
-                                <div class="text-muted text-end">
-                                    2 days ago
-                                </div>
-                                <hr />
-                                <div className="text-end">
-                                    <Button variant="danger">
-                                        Apply now{" "}
-                                        <i class="bi bi-pencil-square"></i>
-                                    </Button>
-                                </div>
-                            </Accordion.Body>
-                            {/* <div class="text-muted text-end card-footer">
-                                2 days ago
-                            </div> */}
-                        </Accordion.Item>
-                    </Accordion>
-
-                    <Accordion defaultActiveKey="0" className="mb-4 shadow">
-                        <Accordion.Item eventKey="0">
-                            <Accordion.Header>
-                                <h5>Amazon</h5>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur. Excepteur sint
-                                occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.
-                                <div class="text-muted text-end">
-                                    2 days ago
-                                </div>
-                                <hr />
-                                <div className="text-end">
-                                    <Button variant="danger">
-                                        Apply now{" "}
-                                        <i class="bi bi-pencil-square"></i>
-                                    </Button>
-                                </div>
-                            </Accordion.Body>
-                            {/* <div class="text-muted text-end card-footer">
-                                2 days ago
-                            </div> */}
-                        </Accordion.Item>
-                    </Accordion>
-
-                    <Accordion defaultActiveKey="0" className="mb-4 shadow">
-                        <Accordion.Item eventKey="0">
-                            <Accordion.Header>
-                                <h5>Uber</h5>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur. Excepteur sint
-                                occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.
-                                <div class="text-muted text-end">
-                                    2 days ago
-                                </div>
-                                <hr />
-                                <div className="text-end">
-                                    <Button variant="danger">
-                                        Apply now{" "}
-                                        <i class="bi bi-pencil-square"></i>
-                                    </Button>
-                                </div>
-                            </Accordion.Body>
-                            {/* <div class="text-muted text-end card-footer">
-                                2 days ago
-                            </div> */}
-                        </Accordion.Item>
-                    </Accordion>
+                    {this.props.jobs &&
+                        this.props.jobs.map((job) => {
+                            // const displayjob = job;
+                            return (
+                                <Accordion
+                                    defaultActiveKey="0"
+                                    className="mb-4 shadow"
+                                    key={job.company}
+                                >
+                                    <Accordion.Item eventKey="0">
+                                        <Accordion.Header>
+                                            <h5>{job.company}</h5>
+                                        </Accordion.Header>
+                                        <Accordion.Body>
+                                            <div>
+                                                <p>CTC: {job.ctc}</p>
+                                                <p>
+                                                    Eligibility:{" "}
+                                                    {job.eligibility}
+                                                </p>
+                                                <p>
+                                                    Offer type: {job.offerType}
+                                                </p>
+                                                <p>
+                                                    Job description:{" "}
+                                                    {job.jobDesc}
+                                                </p>
+                                            </div>
+                                            <div className="text-muted text-end">
+                                                2 days ago
+                                            </div>
+                                            <hr />
+                                            <div className="text-end">
+                                                <Button variant="danger">
+                                                    Apply now{" "}
+                                                    <i className="bi bi-pencil-square"></i>
+                                                </Button>
+                                            </div>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                            );
+                        })}
                 </div>
             </Row>
         );
     }
 }
 
-export default ViewJob;
+function mapStateToProps(state, ownProps) {
+    return {
+        jobs: state.jobs,
+    };
+}
+
+function mapDispatchToProps(dispatch, ownProps) {
+    return {
+        actions: bindActionCreators(jobActions, dispatch),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewJob);
