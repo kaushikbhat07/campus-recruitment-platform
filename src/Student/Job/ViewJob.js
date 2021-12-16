@@ -6,17 +6,27 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Accordion from "react-bootstrap/Accordion";
 import { connect } from "react-redux";
+import * as jobActions from "../../Redux/Actions/JobActions";
+import { bindActionCreators } from "redux";
 
 class ViewJob extends React.Component {
-    state = {
-        jobList: {},
-    };
+    componentDidMount() {
+        this.props.actions
+            .loadJobs()
+            .catch((error) => alert("error loading jobs"));
+    }
 
     render() {
         const jobs = this.props.jobs;
         console.log("jobs frm view jobs: ", jobs);
         // this.props.jobs &&
         // this.props.jobs.forEach((element) => console.log(element[0]));
+
+        // jobs.forEach((element, index) => {
+        //     console.log(element[index].company); // 100, 200, 300
+        //     console.log(index); // 0, 1, 2
+        //     // console.log(array); // same myArray object 3 times
+        // });
 
         return (
             <Row>
@@ -77,4 +87,10 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(ViewJob);
+function mapDispatchToProps(dispatch, ownProps) {
+    return {
+        actions: bindActionCreators(jobActions, dispatch),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewJob);
