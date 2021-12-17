@@ -9,7 +9,7 @@ import * as jobActions from "../../Redux/Actions/JobActions";
 import { bindActionCreators } from "redux";
 // import * as env from "../../env.json";
 
-class Job extends React.Component {
+class CreateJob extends React.Component {
     state = {
         form: {
             validated: false,
@@ -56,7 +56,7 @@ class Job extends React.Component {
             // this.props.dispatch(jobActions.createJob(this.state.newJob));
             this.props.actions
                 .createJob(newJobsList)
-                .catch((error) => alert("error creating job"));
+                .catch((error) => alert("Error creating job. " + error));
 
             // fetch("http://localhost:8085/job/new/multiple", {
             //     method: "POST",
@@ -222,8 +222,10 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
     return {
-        actions: bindActionCreators(jobActions, dispatch),
+        actions: {
+            createJob: bindActionCreators(jobActions.createJob, dispatch),
+        },
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Job);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateJob);
