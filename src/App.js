@@ -10,7 +10,7 @@ import Container from "react-bootstrap/Container";
 import BottomNavbarComponent from "./Components/BottomNavbarComponent";
 import Admin from "./Admin/Admin";
 import Student from "./Student/Student";
-import CreateJob from "./Admin/Job/CreateJob";
+import CreateJobContainer from "./Admin/Job/CreateJobContainer";
 import ViewJobContainer from "./Student/Job/ViewJobContainer";
 // import "bootstrap/dist/js/bootstrap.bundle";
 
@@ -23,7 +23,7 @@ function App() {
                     <Route exact path="/" component={HomePage} />
                     <Route path="/about" component={About} />
                     <Route exact path="/admin" component={Admin} />
-                    <Route path="/admin/job" component={CreateJob} />
+                    <Route path="/admin/job" component={CreateJobContainer} />
                     <Route exact path="/student" component={Student} />
                     <Route
                         exact
