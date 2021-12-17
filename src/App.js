@@ -12,6 +12,7 @@ import Admin from "./Admin/Admin";
 import Student from "./Student/Student";
 import CreateJobContainer from "./Admin/Job/CreateJobContainer";
 import ViewJobContainer from "./Student/Job/ViewJobContainer";
+import ManageJobContainer from "./Admin/Job/ManageJobsContainer";
 // import "bootstrap/dist/js/bootstrap.bundle";
 
 function App() {
@@ -23,7 +24,14 @@ function App() {
                     <Route exact path="/" component={HomePage} />
                     <Route path="/about" component={About} />
                     <Route exact path="/admin" component={Admin} />
-                    <Route path="/admin/job" component={CreateJobContainer} />
+                    <Route
+                        path="/admin/job/create"
+                        component={CreateJobContainer}
+                    />
+                    <Route
+                        path="/admin/job/manage"
+                        component={ManageJobContainer}
+                    />
                     <Route exact path="/student" component={Student} />
                     <Route
                         exact

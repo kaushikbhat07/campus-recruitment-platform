@@ -9,6 +9,10 @@ export function loadJobsSuccess(jobs) {
     return { type: types.LOAD_JOBS_SUCCESS, jobs: jobs };
 }
 
+export function deleteJobSuccess(jobs) {
+    return { type: types.DELETE_JOBS_SUCCESS, jobs: jobs };
+}
+
 export function loadJobs() {
     return function (dispatch) {
         return jobApi
@@ -30,6 +34,19 @@ export function createJob(job) {
             .then((job) => {
                 setTimeout(() => dispatch(createJobSuccess(job)), 2000);
                 // dispatch(loadJobsSuccess(jobs));
+            })
+            .catch((error) => {
+                throw error;
+            });
+    };
+}
+
+export function deleteJob(jobId) {
+    return function (dispatch) {
+        return jobApi
+            .deleteJob(jobId)
+            .then((jobs) => {
+                setTimeout(() => dispatch(deleteJobSuccess(jobs)), 2000);
             })
             .catch((error) => {
                 throw error;

@@ -2,7 +2,7 @@ import React from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 
-const ViewJobs = ({ jobs }) => {
+const ManageJobs = ({ jobs, onClickDeleteJob }) => {
     return (
         jobs &&
         jobs.map((job) => (
@@ -25,9 +25,15 @@ const ViewJobs = ({ jobs }) => {
                         <div className="text-muted text-end">2 days ago</div>
                         <hr />
                         <div className="text-end">
-                            <Button variant="danger">
-                                Apply now{" "}
-                                <i className="bi bi-pencil-square"></i>
+                            <Button variant="primary" className="me-3">
+                                Modify <i className="bi bi-pencil-square"></i>
+                            </Button>
+
+                            <Button
+                                variant="danger"
+                                onClick={() => onClickDeleteJob(job.jobId)}
+                            >
+                                Delete <i className="bi bi-trash"></i>
                             </Button>
                         </div>
                     </Accordion.Body>
@@ -37,4 +43,4 @@ const ViewJobs = ({ jobs }) => {
     );
 };
 
-export default ViewJobs;
+export default ManageJobs;
