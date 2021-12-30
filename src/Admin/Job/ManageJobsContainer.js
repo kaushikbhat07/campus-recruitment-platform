@@ -1,5 +1,6 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
+import Alert from "react-bootstrap/Alert";
 import { connect } from "react-redux";
 import * as jobActions from "../../Redux/Actions/JobActions";
 import { bindActionCreators } from "redux";
@@ -9,7 +10,7 @@ class ManageJobsContainer extends React.Component {
     componentDidMount() {
         this.props.actions
             .loadJobs()
-            .catch((error) => alert("Error loading jobs. " + error));
+            .catch((error) => console.error("Error loading jobs. " + error));
     }
 
     onClickDeleteJob = (jobId) => this.props.actions.deleteJob(jobId);
@@ -21,10 +22,25 @@ class ManageJobsContainer extends React.Component {
             <Row>
                 <div>
                     <h5 className="mb-4">Current Published Jobs</h5>
-                    <ManageJobs
-                        jobs={jobs}
-                        onClickDeleteJob={this.onClickDeleteJob}
-                    />
+                    {
+                        //show error if no jobs are available
+                        jobs.length === 0 ? (
+                            <Alert variant="danger">
+                                <Alert.Heading>
+                                    No jobs available at the moment!
+                                </Alert.Heading>
+                                <p>
+                                    You have not added any jobs yet! Go ahead
+                                    and add new jobs.
+                                </p>
+                            </Alert>
+                        ) : (
+                            <ManageJobs
+                                jobs={jobs}
+                                onClickDeleteJob={this.onClickDeleteJob}
+                            />
+                        )
+                    }
                 </div>
             </Row>
         );

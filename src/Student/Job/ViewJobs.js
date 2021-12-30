@@ -17,6 +17,7 @@ const ViewJobs = ({ jobs }) => {
                     </Accordion.Header>
                     <Accordion.Body>
                         <div>
+                            <p>ID: {job.jobId}</p>
                             <p>CTC: {job.ctc}</p>
                             <p>Eligibility: {job.eligibility}</p>
                             <p>Offer type: {job.offerType}</p>

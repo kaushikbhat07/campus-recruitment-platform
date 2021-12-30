@@ -43,9 +43,15 @@ function BottomNavbarComponent() {
                 <Nav>
                     <Link
                         className="nav-link nav-reduce-top-bottom-padding"
-                        to="/admin/job"
+                        to="/admin/job/create"
                     >
                         <Nav.Link href="#login">Create Job</Nav.Link>
+                    </Link>
+                    <Link
+                        className="nav-link nav-reduce-top-bottom-padding"
+                        to="/admin/job/manage"
+                    >
+                        <Nav.Link href="#login">Manage Jobs</Nav.Link>
                     </Link>
                     <Link
                         className="nav-link nav-reduce-top-bottom-padding"

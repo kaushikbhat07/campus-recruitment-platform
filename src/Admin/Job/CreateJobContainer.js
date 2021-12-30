@@ -68,6 +68,7 @@ class CreateJobContainer extends React.Component {
                         form={form}
                         handleSubmit={this.handleSubmit}
                         handleFormChange={this.handleFormChange}
+                        job={this.state.newJob}
                     />
                 </Card>
             </Row>

@@ -8,6 +8,10 @@ export default function jobReducer(state = [], action) {
             return action.jobs;
         case types.DELETE_JOBS_SUCCESS:
             return action.jobs;
+        case types.MODIFY_JOBS_SUCCESS:
+            return state.map((job) =>
+                job.id === action.job.id ? action.job : job
+            );
         default:
             return state;
     }

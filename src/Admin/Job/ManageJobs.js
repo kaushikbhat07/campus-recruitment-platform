@@ -1,6 +1,7 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const ManageJobs = ({ jobs, onClickDeleteJob }) => {
     return (
@@ -25,9 +26,12 @@ const ManageJobs = ({ jobs, onClickDeleteJob }) => {
                         <div className="text-muted text-end">2 days ago</div>
                         <hr />
                         <div className="text-end">
-                            <Button variant="primary" className="me-3">
-                                Modify <i className="bi bi-pencil-square"></i>
-                            </Button>
+                            <Link to={`/admin/job/modify/${job.jobId}`}>
+                                <Button variant="primary" className="me-3">
+                                    Modify{" "}
+                                    <i className="bi bi-pencil-square"></i>
+                                </Button>
+                            </Link>
 
                             <Button
                                 variant="danger"

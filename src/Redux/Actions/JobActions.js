@@ -5,6 +5,10 @@ export function createJobSuccess(job) {
     return { type: types.CREATE_JOBS_SUCCESS, job: job };
 }
 
+export function modifyJobsSuccess(job) {
+    return { type: types.MODIFY_JOBS_SUCCESS, job: job };
+}
+
 export function loadJobsSuccess(jobs) {
     return { type: types.LOAD_JOBS_SUCCESS, jobs: jobs };
 }
@@ -19,6 +23,34 @@ export function loadJobs() {
             .getJobs()
             .then((jobs) => {
                 setTimeout(() => dispatch(loadJobsSuccess(jobs)), 2000);
+                // dispatch(loadJobsSuccess(jobs));
+            })
+            .catch((error) => {
+                throw error;
+            });
+    };
+}
+
+export function loadJobById(jobId) {
+    return function (dispatch) {
+        return jobApi
+            .getJobById(jobId)
+            .then((jobs) => {
+                setTimeout(() => dispatch(loadJobsSuccess(jobs)), 2000);
+                // dispatch(loadJobsSuccess(jobs));
+            })
+            .catch((error) => {
+                throw error;
+            });
+    };
+}
+
+export function modifyJob(job) {
+    return function (dispatch) {
+        return jobApi
+            .modifyJob(job)
+            .then((job) => {
+                setTimeout(() => dispatch(modifyJobsSuccess(job)), 2000);
                 // dispatch(loadJobsSuccess(jobs));
             })
             .catch((error) => {

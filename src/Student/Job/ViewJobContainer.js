@@ -1,5 +1,6 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
+import Alert from "react-bootstrap/Alert";
 import { connect } from "react-redux";
 import * as jobActions from "../../Redux/Actions/JobActions";
 import { bindActionCreators } from "redux";
@@ -9,17 +10,35 @@ class ViewJobContainer extends React.Component {
     componentDidMount() {
         this.props.actions
             .loadJobs()
-            .catch((error) => alert("Error loading jobs. " + error));
+            .catch((error) => console.error("Error loading jobs. " + error));
     }
 
     render() {
         const { jobs } = this.props;
+        console.log(jobs);
 
         return (
             <Row>
                 <div>
                     <h5 className="mb-4">Job Openings</h5>
-                    <ViewJobs jobs={jobs} />
+
+                    {
+                        //show error if no jobs are available
+                        jobs.length === 0 ? (
+                            <Alert variant="danger">
+                                <Alert.Heading>
+                                    No jobs available at the moment!
+                                </Alert.Heading>
+                                <p>
+                                    Sorry! No jobs are open right now. Tell your
+                                    college to be a little competent and get
+                                    some companies.
+                                </p>
+                            </Alert>
+                        ) : (
+                            <ViewJobs jobs={jobs} />
+                        )
+                    }
                 </div>
             </Row>
         );

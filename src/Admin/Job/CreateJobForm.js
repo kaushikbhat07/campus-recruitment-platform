@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 
-const CreateJobForm = ({ form, handleSubmit, handleFormChange }) => (
+const CreateJobForm = ({ form, handleSubmit, handleFormChange, job }) => (
     <Form noValidate validated={form.validated} onSubmit={handleSubmit}>
         <Row className="mb-3">
             <Form.Group as={Col} md="4" controlId="validationCustom01">
@@ -15,6 +15,7 @@ const CreateJobForm = ({ form, handleSubmit, handleFormChange }) => (
                     name="company"
                     placeholder="Company Name"
                     onChange={handleFormChange}
+                    defaultValue={job.company}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
@@ -31,6 +32,7 @@ const CreateJobForm = ({ form, handleSubmit, handleFormChange }) => (
                     placeholder="CTC"
                     name="ctc"
                     onChange={handleFormChange}
+                    defaultValue={job.ctc}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
@@ -47,6 +49,7 @@ const CreateJobForm = ({ form, handleSubmit, handleFormChange }) => (
                     placeholder="Eligibility"
                     name="eligibility"
                     onChange={handleFormChange}
+                    defaultValue={job.eligibility}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
@@ -64,6 +67,7 @@ const CreateJobForm = ({ form, handleSubmit, handleFormChange }) => (
                     placeholder="Job Description"
                     name="jobDesc"
                     onChange={handleFormChange}
+                    defaultValue={job.jobDesc}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
@@ -80,6 +84,7 @@ const CreateJobForm = ({ form, handleSubmit, handleFormChange }) => (
                     placeholder="Offer Type"
                     name="offerType"
                     onChange={handleFormChange}
+                    defaultValue={job.offerType}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
