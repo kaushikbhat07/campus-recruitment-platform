@@ -10,7 +10,7 @@ export default function jobReducer(state = [], action) {
             return action.jobs;
         case types.MODIFY_JOBS_SUCCESS:
             return state.map((job) =>
-                job.id === action.job.id ? action.job : job
+                job.jobId === action.job.jobId ? action.job : job
             );
         default:
             return state;
