@@ -1,5 +1,5 @@
 import React from "react";
-import Row from "react-bootstrap/Row";
+    import Row from "react-bootstrap/Row";
 import Alert from "react-bootstrap/Alert";
 import { connect } from "react-redux";
 import * as jobActions from "../../Redux/Actions/JobActions";
