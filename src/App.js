@@ -16,6 +16,7 @@ import ManageJobContainer from "./Admin/Job/ManageJobsContainer";
 import ModifyJobContainer from "./Admin/Job/ModifyJobContainer";
 import StudentProfileContainer from "./Student/Profile/StudentProfileContainer";
 import CreateProfileContainer from "./Student/Profile/CreateProfileContainer";
+import ApplyJobContainer from "./Student/Job/ApplyJobContainer";
 // import "bootstrap/dist/js/bootstrap.bundle";
 
 function App() {
@@ -54,6 +55,11 @@ function App() {
                         exact
                         path="/student/create"
                         component={CreateProfileContainer}
+                    />
+                    <Route
+                        exact
+                        path="/student/:studentId/job/:jobId/apply"
+                        component={ApplyJobContainer}
                     />
                     <Route component={PageNotFound} />
                 </Switch>

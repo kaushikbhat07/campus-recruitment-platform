@@ -15,14 +15,17 @@ class StudentProfileContainer extends Component {
         currentStudentUpdated: false,
     };
 
-    componentDidUpdate() {
+    setCurrentStudentFromState = () => {
         if (!this.state.currentStudentUpdated) {
-            // this.setState({ newStudent: this.props.student });
             this.props.student.map((student) =>
                 this.setState({ currentStudent: student, newStudent: student })
             );
             this.setState({ currentStudentUpdated: true });
         }
+    };
+
+    componentDidUpdate() {
+        this.setCurrentStudentFromState();
     }
 
     componentDidMount() {
@@ -32,6 +35,8 @@ class StudentProfileContainer extends Component {
         if (studentSize === 0) {
             const { id } = this.props.match.params;
             this.props.actions.loadStudentById(parseInt(id));
+        } else {
+            this.setCurrentStudentFromState();
         }
     }
 

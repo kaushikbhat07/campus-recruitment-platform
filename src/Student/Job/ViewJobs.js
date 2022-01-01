@@ -1,6 +1,7 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const ViewJobs = ({ jobs }) => {
     return (
@@ -26,10 +27,12 @@ const ViewJobs = ({ jobs }) => {
                         <div className="text-muted text-end">2 days ago</div>
                         <hr />
                         <div className="text-end">
-                            <Button variant="danger">
-                                Apply now{" "}
-                                <i className="bi bi-pencil-square"></i>
-                            </Button>
+                            <Link to={`/student/7/job/${job.jobId}/apply`}>
+                                <Button variant="danger">
+                                    Apply now{" "}
+                                    <i className="bi bi-pencil-square"></i>
+                                </Button>
+                            </Link>
                         </div>
                     </Accordion.Body>
                 </Accordion.Item>
