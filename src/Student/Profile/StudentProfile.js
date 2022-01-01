@@ -174,6 +174,31 @@ const StudentProfile = ({ student, form, handleSubmit, handleFormChange }) => (
         </Card>
         <Card className="mb-4 p-3 shadow">
             <Card.Body>
+                <h6>Resume</h6>
+                <hr />
+                <Row className="mb-3">
+                    <Form.Group as={Col} md="4" controlId="validationCustom21">
+                        <Form.Label>Resume</Form.Label>
+                        <Form.Control
+                            required
+                            type="text"
+                            name="resume"
+                            placeholder="Resume"
+                            onChange={handleFormChange}
+                            defaultValue={student.resume}
+                        />
+                        <Form.Control.Feedback>
+                            Looks good!
+                        </Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">
+                            Please provide a valid Company Name.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                </Row>
+            </Card.Body>
+        </Card>
+        <Card className="mb-4 p-3 shadow">
+            <Card.Body>
                 <h6>Current/Ongoing Course</h6>
                 <hr />
                 <Row className="mb-3">

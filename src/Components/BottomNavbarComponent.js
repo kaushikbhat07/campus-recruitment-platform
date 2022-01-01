@@ -65,6 +65,12 @@ function BottomNavbarComponent() {
                     >
                         <Nav.Link href="#login">View Student Profile</Nav.Link>
                     </Link>
+                    <Link
+                        className="nav-link nav-reduce-top-bottom-padding"
+                        to="/student/create/"
+                    >
+                        <Nav.Link href="#login">Add Student</Nav.Link>
+                    </Link>
                 </Nav>
                 {/* </Navbar.Collapse>  */}
             </Container>
