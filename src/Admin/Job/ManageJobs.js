@@ -26,6 +26,13 @@ const ManageJobs = ({ jobs, onClickDeleteJob }) => {
                         <div className="text-muted text-end">2 days ago</div>
                         <hr />
                         <div className="text-end">
+                            <Link to={`/admin/job/${job.jobId}/applications`}>
+                                <Button variant="success" className="me-3">
+                                    View Applicants{" "}
+                                    <i className="bi bi-pencil-square"></i>
+                                </Button>
+                            </Link>
+
                             <Link to={`/admin/job/modify/${job.jobId}`}>
                                 <Button variant="primary" className="me-3">
                                     Modify{" "}
