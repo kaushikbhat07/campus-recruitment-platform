@@ -67,6 +67,12 @@ function TopNavbarComponent() {
                         >
                             <Nav.Link href="#student">Student</Nav.Link>
                         </Link>
+                        <Link
+                            className="nav-link nav-reduce-top-bottom-padding"
+                            to="/logout"
+                        >
+                            <Nav.Link href="#student">Logout</Nav.Link>
+                        </Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

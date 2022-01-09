@@ -6,8 +6,23 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import configureStore from "./Redux/configureStore";
 import { Provider } from "react-redux";
+import { initializeApp } from "firebase/app";
 
 const store = configureStore();
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCjWgDqwaMPRxYmg_SuH3S9AFnWF1PrdYw",
+    authDomain: "campus-hire.firebaseapp.com",
+    projectId: "campus-hire",
+    storageBucket: "campus-hire.appspot.com",
+    messagingSenderId: "497233302397",
+    appId: "1:497233302397:web:b5141527fc94bb3a75f214",
+    measurementId: "G-YDZ38Z0T13",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+console.log(app);
 
 ReactDOM.render(
     <Provider store={store}>

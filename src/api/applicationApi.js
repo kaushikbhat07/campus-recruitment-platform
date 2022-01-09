@@ -15,7 +15,7 @@ export function createApplcation(jobId, studentId) {
 
 export function getApplicationsByJobId(jobId) {
     const getApplicationsByJobIdUrl =
-        env.HOST + "/applicant/view/" + jobId + "/applications";
+        env.HOST + "/applicant/view/job/" + jobId + "/applications";
 
     return fetch(getApplicationsByJobIdUrl, {
         method: "GET",

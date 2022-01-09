@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as jobActions from "../../Redux/Actions/JobActions";
 import { bindActionCreators } from "redux";
 import CreateJobForm from "./CreateJobForm";
+import * as authActions from "../../Redux/Actions/AuthActions";
 
 class ModifyJobContainer extends React.Component {
     state = {
@@ -14,16 +15,22 @@ class ModifyJobContainer extends React.Component {
         newJob: {},
         currentJob: {},
         currentJobUpdated: false,
+        jobToBeModified: null,
     };
 
     componentDidUpdate() {
         if (!this.state.currentJobUpdated) {
-            this.setState({ newJob: this.props.jobToBeModified });
-            this.setState({ currentJobUpdated: true });
+            this.setState({
+                newJob: this.props.jobToBeModified,
+                jobToBeModified: this.props.jobToBeModified,
+                currentJobUpdated: true,
+            });
         }
     }
 
     componentDidMount() {
+        this.props.actions.checkAuthStatus();
+
         const jobsSize = this.props.jobs.length;
 
         // Load job if state doesnt consist of jobs
@@ -63,14 +70,14 @@ class ModifyJobContainer extends React.Component {
             this.setState({ form: formUpdatedState });
         } else {
             console.log("OK for submission");
-
+            console.log(this.state.newJob);
             this.props.actions.modifyJob(this.state.newJob);
         }
     };
 
     render() {
         const form = this.state.form;
-        const jobToBeModified = this.props.jobToBeModified;
+        let jobToBeModified = this.state.jobToBeModified;
 
         return (
             <Row>
@@ -97,6 +104,7 @@ function mapStateToProps(state, ownProps) {
     return {
         jobs: state.jobs,
         jobToBeModified: state.jobs.find((job) => job.jobId === parseInt(id)),
+        user: state.user,
     };
 }
 
@@ -106,6 +114,10 @@ function mapDispatchToProps(dispatch, ownProps) {
             modifyJob: bindActionCreators(jobActions.modifyJob, dispatch),
             loadJobById: bindActionCreators(jobActions.loadJobById, dispatch),
             loadJobs: bindActionCreators(jobActions.loadJobs, dispatch),
+            checkAuthStatus: bindActionCreators(
+                authActions.checkAuthStatus,
+                dispatch
+            ),
         },
     };
 }

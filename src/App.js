@@ -18,6 +18,9 @@ import StudentProfileContainer from "./Student/Profile/StudentProfileContainer";
 import CreateProfileContainer from "./Student/Profile/CreateProfileContainer";
 import ApplyJobContainer from "./Student/Job/ApplyJobContainer";
 import ManageApplications from "./Admin/Applications/ManageApplications";
+import Login from "./Auth/Login";
+import Register from "./Auth/Register";
+import Logout from "./Auth/Logout";
 // import "bootstrap/dist/js/bootstrap.bundle";
 
 function App() {
@@ -29,6 +32,9 @@ function App() {
                     <Route exact path="/" component={HomePage} />
                     <Route path="/about" component={About} />
                     <Route exact path="/admin" component={Admin} />
+                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/logout" component={Logout} />
+                    <Route exact path="/register" component={Register} />
                     <Route
                         path="/admin/job/create"
                         component={CreateJobContainer}
