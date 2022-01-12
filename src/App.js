@@ -32,9 +32,11 @@ function App() {
                     <Route exact path="/" component={HomePage} />
                     <Route path="/about" component={About} />
                     <Route exact path="/admin" component={Admin} />
-                    <Route exact path="/login" component={Login} />
+                    {/* <Route exact path="/login" component={Login} /> */}
                     <Route exact path="/logout" component={Logout} />
-                    <Route exact path="/register" component={Register} />
+                    {/* <Route exact path="/register" component={Register} /> */}
+                    <Route exact path="/admin/register" component={Register} />
+                    <Route exact path="/admin/login" component={Login} />
                     <Route
                         path="/admin/job/create"
                         component={CreateJobContainer}

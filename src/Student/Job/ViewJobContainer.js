@@ -30,9 +30,7 @@ class ViewJobContainer extends React.Component {
                                     No jobs available at the moment!
                                 </Alert.Heading>
                                 <p>
-                                    Sorry! No jobs are open right now. Tell your
-                                    college to be a little competent and get
-                                    some companies.
+                                    Sorry! No jobs are open right now.
                                 </p>
                             </Alert>
                         ) : (
