@@ -6,7 +6,13 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import "./StudentProfile.css";
 
-const StudentProfile = ({ student, form, handleSubmit, handleFormChange }) => (
+const StudentProfile = ({
+    student,
+    form,
+    handleSubmit,
+    handleFormChange,
+    source,
+}) => (
     <Form noValidate validated={form.validated} onSubmit={handleSubmit}>
         <Card className="mb-4 p-3 shadow">
             <Card.Body>
@@ -354,7 +360,9 @@ const StudentProfile = ({ student, form, handleSubmit, handleFormChange }) => (
             </Card.Body>
         </Card>
         <Button type="submit" variant="success">
-            Update Profile
+            {source && source === "create"
+                ? "Create Profile"
+                : "Update Profile"}
         </Button>
     </Form>
 );

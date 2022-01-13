@@ -17,6 +17,7 @@ export function applyJob(jobId, studentId) {
         return applicationApi
             .createApplcation(jobId, studentId)
             .then((application) => {
+                alert("Applied for job successfully! ");
                 setTimeout(
                     () => dispatch(createApplicationSuccess(application)),
                     2000
@@ -24,7 +25,8 @@ export function applyJob(jobId, studentId) {
                 // dispatch(loadJobsSuccess(jobs));
             })
             .catch((error) => {
-                throw error;
+                alert("You cannot apply to the same job again!");
+                // throw error;
             });
     };
 }
@@ -42,7 +44,8 @@ export function loadApplicationsByJobId(jobId) {
                 // dispatch(loadJobsSuccess(jobs));
             })
             .catch((error) => {
-                throw error;
+                // throw error;
+                alert("Error loading job applications! ");
             });
     };
 }

@@ -22,7 +22,8 @@ export function loadStudentById(studentId) {
                 // dispatch(loadJobsSuccess(jobs));
             })
             .catch((error) => {
-                throw error;
+                alert("Error loading student.");
+                // throw error;
             });
     };
 }
@@ -32,11 +33,13 @@ export function modifyStudent(student) {
         return studentApi
             .updateStudent(student)
             .then((student) => {
+                alert("Student modified successfully.");
                 setTimeout(() => dispatch(modifyStudentSuccess(student)), 2000);
                 // dispatch(loadJobsSuccess(jobs));
             })
             .catch((error) => {
-                throw error;
+                alert("Error modifying student.");
+                // throw error;
             });
     };
 }
@@ -46,11 +49,13 @@ export function createStudent(student) {
         return studentApi
             .addStudent(student)
             .then((student) => {
+                alert("Student added successfully.");
                 setTimeout(() => dispatch(createStudentSuccess(student)), 2000);
                 // dispatch(loadJobsSuccess(jobs));
             })
             .catch((error) => {
-                throw error;
+                alert("Error creating student.");
+                // throw error;
             });
     };
 }

@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { getDoc, getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
+import * as authApi from "../../api/authApi";
 
 import * as types from "./ActionTypes";
 
@@ -33,6 +34,12 @@ export function login(user) {
                 const signedInUser = userCredential.user.auth.currentUser;
                 // ...
                 console.log(signedInUser);
+
+                alert(
+                    "Admin user is logged in! \n" +
+                        "Email: " +
+                        signedInUser.email
+                );
 
                 const docRef = doc(db, "users", signedInUser.uid);
                 const docSnap = await getDoc(docRef);
@@ -73,8 +80,11 @@ export function checkAuthStatus() {
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 // const uid = user.uid;
                 // ...
+                console.log("Auth status: ");
+                console.log(user.auth.currentUser);
                 setTimeout(() => dispatch(userSignedIn(user)), 2000);
             } else {
+                console.log("Not logged in");
                 setTimeout(() => dispatch(userSignedOut()), 2000);
             }
         });
@@ -88,10 +98,11 @@ export function logout() {
         const auth = getAuth();
         signOut(auth)
             .then(() => {
+                console.log("logged out");
                 setTimeout(() => dispatch(userSignedOut()), 2000);
             })
             .catch((error) => {
-                // An error happened.
+                console.error(error);
             });
     };
 }
@@ -116,6 +127,11 @@ export function register(user) {
                 );
 
                 console.log(registeredUser);
+                alert(
+                    "Admin User registered and is now currently logged in! " +
+                        "\nEmail: " +
+                        registeredUser.email
+                );
                 setTimeout(
                     () => dispatch(registerUserSuccess(registeredUser)),
                     2000
@@ -129,14 +145,5 @@ export function register(user) {
 
                 console.error(errorCode + ": " + errorMessage);
             });
-        // return jobApi
-        //     .getJobs()
-        //     .then((jobs) => {
-        //         setTimeout(() => dispatch(registerUserSuccess(jobs)), 2000);
-        //         // dispatch(loadJobsSuccess(jobs));
-        //     })
-        //     .catch((error) => {
-        //         throw error;
-        //     });
     };
 }

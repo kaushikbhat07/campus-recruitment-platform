@@ -90,6 +90,7 @@ class ModifyJobContainer extends React.Component {
                             handleSubmit={this.handleSubmit}
                             handleFormChange={this.handleFormChange}
                             job={jobToBeModified}
+                            source="modify"
                         />
                     )}
                 </Card>

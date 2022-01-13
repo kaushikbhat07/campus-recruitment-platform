@@ -1,25 +1,23 @@
 import React, { Component } from "react";
+import Alert from "react-bootstrap/Alert";
+import Row from "react-bootstrap/Row";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import * as authActions from "../Redux/Actions/AuthActions";
+import { bindActionCreators } from "redux";
 
-class Logout extends Component {
-    state = {
-        loggedOut: false,
-    };
-
+class StudentLoggedIn extends Component {
     componentDidMount() {
-        if (!this.state.loggedOut) {
-            this.props.actions.logout();
-            this.props.actions.checkAuthStatus();
-            this.setState({
-                loggedOut: true,
-            });
-        }
+        this.props.actions.checkAuthStatus();
     }
 
     render() {
-        return <div>Logged out!</div>;
+        return (
+            <Row>
+                {/* <Card body className="shadow"> */}
+                <Alert variant="success">Student Login Success!</Alert>
+                {/* </Card> */}
+            </Row>
+        );
     }
 }
 
@@ -32,7 +30,6 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
     return {
         actions: {
-            logout: bindActionCreators(authActions.logout, dispatch),
             checkAuthStatus: bindActionCreators(
                 authActions.checkAuthStatus,
                 dispatch
@@ -41,4 +38,4 @@ function mapDispatchToProps(dispatch, ownProps) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Logout);
+export default connect(mapStateToProps, mapDispatchToProps)(StudentLoggedIn);

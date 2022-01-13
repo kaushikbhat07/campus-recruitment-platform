@@ -4,7 +4,13 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 
-const CreateJobForm = ({ form, handleSubmit, handleFormChange, job }) => (
+const CreateJobForm = ({
+    form,
+    handleSubmit,
+    handleFormChange,
+    job,
+    source,
+}) => (
     <Form noValidate validated={form.validated} onSubmit={handleSubmit}>
         <Row className="mb-3">
             <Form.Group as={Col} md="4" controlId="validationCustom01">
@@ -92,7 +98,11 @@ const CreateJobForm = ({ form, handleSubmit, handleFormChange, job }) => (
                 </Form.Control.Feedback>
             </Form.Group>
         </Row>
-        <Button type="submit">Create Job</Button>
+        <Button type="submit">
+            {source !== null && source && source === "modify"
+                ? "Modify Job"
+                : "Create Job"}
+        </Button>
     </Form>
 );
 

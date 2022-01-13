@@ -26,7 +26,8 @@ export function loadJobs() {
                 // dispatch(loadJobsSuccess(jobs));
             })
             .catch((error) => {
-                throw error;
+                alert("Error loading job.");
+                // throw error;
             });
     };
 }
@@ -40,7 +41,8 @@ export function loadJobById(jobId) {
                 // dispatch(loadJobsSuccess(jobs));
             })
             .catch((error) => {
-                throw error;
+                alert("Error loading job.");
+                // throw error;
             });
     };
 }
@@ -50,11 +52,13 @@ export function modifyJob(job) {
         return jobApi
             .modifyJob(job)
             .then((job) => {
+                alert("Job modified successfully.");
                 setTimeout(() => dispatch(modifyJobsSuccess(job)), 2000);
                 // dispatch(loadJobsSuccess(jobs));
             })
             .catch((error) => {
-                throw error;
+                alert("Error modifying job.");
+                // throw error;
             });
     };
 }
@@ -64,11 +68,15 @@ export function createJob(job) {
         return jobApi
             .createJob(job)
             .then((job) => {
+                alert(
+                    "Job created. View the new job posting under Manage Jobs option"
+                );
                 setTimeout(() => dispatch(createJobSuccess(job)), 2000);
                 // dispatch(loadJobsSuccess(jobs));
             })
             .catch((error) => {
-                throw error;
+                alert("Error! Job could not be created. ");
+                // throw error;
             });
     };
 }
@@ -78,10 +86,13 @@ export function deleteJob(jobId) {
         return jobApi
             .deleteJob(jobId)
             .then((jobs) => {
-                setTimeout(() => dispatch(deleteJobSuccess(jobs)), 2000);
+                alert("Job with the ID: " + jobId + " deleted");
+                setTimeout(() => dispatch(deleteJobSuccess(jobs)), 0);
             })
             .catch((error) => {
-                throw error;
+                alert(
+                    "Job could not be deleted. Note that you cannot delete the jobs that have applicants!"
+                );
             });
     };
 }

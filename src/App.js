@@ -21,6 +21,8 @@ import ManageApplications from "./Admin/Applications/ManageApplications";
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
 import Logout from "./Auth/Logout";
+import AdminLogin from "./Auth/AdminLogin";
+import StudentLoggedIn from "./Auth/StudentLoggedIn";
 // import "bootstrap/dist/js/bootstrap.bundle";
 
 function App() {
@@ -36,7 +38,7 @@ function App() {
                     <Route exact path="/logout" component={Logout} />
                     {/* <Route exact path="/register" component={Register} /> */}
                     <Route exact path="/admin/register" component={Register} />
-                    <Route exact path="/admin/login" component={Login} />
+                    <Route exact path="/admin/login" component={AdminLogin} />
                     <Route
                         path="/admin/job/create"
                         component={CreateJobContainer}
@@ -54,6 +56,12 @@ function App() {
                         component={ManageApplications}
                     />
                     <Route exact path="/student" component={Student} />
+                    <Route exact path="/student/login" component={Login} />
+                    <Route
+                        exact
+                        path="/student/loggedIn"
+                        component={StudentLoggedIn}
+                    />
                     <Route
                         exact
                         path="/student/job"

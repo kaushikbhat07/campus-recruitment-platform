@@ -15,11 +15,11 @@ class Register extends Component {
     };
 
     componentDidUpdate() {
-        console.log(this.props.user);
+        // console.log(this.props.user);
     }
 
     componentDidMount() {
-        console.log(this.props.user);
+        // console.log(this.props.user);
     }
 
     /**
@@ -67,6 +67,7 @@ class Register extends Component {
             console.log(this.state.register);
 
             this.props.actions.register(this.state.register);
+            this.props.actions.checkAuthStatus();
         }
     };
 
@@ -76,7 +77,7 @@ class Register extends Component {
         return (
             <Row>
                 <Card body className="shadow">
-                    <h5>Register</h5>
+                    <h5>Admin Register</h5>
                     <hr />
 
                     <RegisterForm
@@ -100,6 +101,10 @@ function mapDispatchToProps(dispatch, ownProps) {
     return {
         actions: {
             register: bindActionCreators(authActions.register, dispatch),
+            checkAuthStatus: bindActionCreators(
+                authActions.checkAuthStatus,
+                dispatch
+            ),
         },
     };
 }
